@@ -1,0 +1,12 @@
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\bin\Debug\net8.0\Students.DAL.deps.json
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\bin\Debug\net8.0\Students.DAL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\bin\Debug\net8.0\Students.DAL.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.csproj.AssemblyReference.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.AssemblyInfoInputs.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.AssemblyInfo.cs
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.csproj.CoreCompileInputs.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\refint\Students.DAL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\Students.DAL.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.DAL\Students.DAL\obj\Debug\net8.0\ref\Students.DAL.dll

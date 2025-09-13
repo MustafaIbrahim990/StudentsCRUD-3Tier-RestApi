@@ -1,0 +1,16 @@
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\bin\Debug\Students.UI.WinForms.exe.config
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\bin\Debug\Students.UI.WinForms.exe
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\bin\Debug\Students.UI.WinForms.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\bin\Debug\Newtonsoft.Json.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\bin\Debug\Newtonsoft.Json.xml
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.csproj.AssemblyReference.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.Form1.resources
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.frmStudentRecords.resources
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.Properties.Resources.resources
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.csproj.GenerateResource.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.csproj.CoreCompileInputs.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.357373A6.Up2Date
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.exe
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.exe.config
+C:\Users\abdul\source\repos\APIs\Students Project\Students.UI.WinForms\Students.UI.WinForms\obj\Debug\Students.UI.WinForms.frmAddUpdateStudent.resources

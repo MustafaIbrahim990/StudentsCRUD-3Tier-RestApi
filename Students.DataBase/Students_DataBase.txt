@@ -1,0 +1,489 @@
+USE [master]
+GO
+/****** Object:  Database [Students_DB]    Script Date: 9/6/2025 4:21:28 PM ******/
+CREATE DATABASE [Students_DB]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Students_DB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\Students_DB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'Students_DB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\Students_DB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [Students_DB] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Students_DB].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Students_DB] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Students_DB] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Students_DB] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Students_DB] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Students_DB] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Students_DB] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Students_DB] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Students_DB] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Students_DB] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Students_DB] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Students_DB] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Students_DB] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Students_DB] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Students_DB] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Students_DB] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Students_DB] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Students_DB] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Students_DB] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Students_DB] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Students_DB] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Students_DB] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Students_DB] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Students_DB] SET RECOVERY FULL 
+GO
+ALTER DATABASE [Students_DB] SET  MULTI_USER 
+GO
+ALTER DATABASE [Students_DB] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Students_DB] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Students_DB] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Students_DB] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [Students_DB] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [Students_DB] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'Students_DB', N'ON'
+GO
+ALTER DATABASE [Students_DB] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [Students_DB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [Students_DB]
+GO
+/****** Object:  Table [dbo].[Students]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Students](
+	[StudentID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Age] [int] NOT NULL,
+	[Grade] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[StudentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Students] ON 
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (1, N'Salma', 22, 90)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (2, N'Maher Khalid', 25, 45)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (3, N'Suha Hadid', 27, 88)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (4, N'loay', 20, 20)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (5, N'Huda', 40, 44)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (6, N'Majida', 30, 80)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (7, N'Majda 3', 30, 30)
+GO
+INSERT [dbo].[Students] ([StudentID], [Name], [Age], [Grade]) VALUES (8, N'Mazen Abdullah', 20, 85)
+GO
+SET IDENTITY_INSERT [dbo].[Students] OFF
+GO
+ALTER TABLE [dbo].[Students]  WITH CHECK ADD CHECK  (([Age]>(0)))
+GO
+ALTER TABLE [dbo].[Students]  WITH CHECK ADD CHECK  (([Grade]>=(0) AND [Grade]<=(100)))
+GO
+/****** Object:  StoredProcedure [dbo].[SP_AddNewStudent]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+Create Procedure [dbo].[SP_AddNewStudent]
+	@Name nvarchar(50),
+	@Age int,
+	@Grade int,
+	@NewStudentID int Output
+AS
+BEGIN
+	SET NoCount ON;
+		BEGIN TRY
+			if (@Name is Null OR Trim(@Name) = ' ')
+				Throw 50001, 'Name Can not be Empty!', 1;
+
+			if (@Age < 0)
+				Throw 50002, 'Age Must be a Positive Number!', 2;
+
+			if (@Grade is Null)
+				Throw 50003, 'Grade Can not be Empty!', 3;
+
+			if (@Grade < 0 OR @Grade > 100)
+				Throw 50004, 'Grade Must be between 0 and 100!', 4;
+
+			INSERT INTO dbo.Students(Name, Age, Grade)
+				Values (@Name, @Age, @Grade);
+
+				SET @NewStudentID = SCOPE_IDENTITY();
+		END TRY
+		BEGIN CATCH
+			Declare @Error_Message nvarchar(4000) = Error_Message();
+			Throw 50005, @Error_Message, 5;
+		END CATCH
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DeleteStudent]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+Create Procedure [dbo].[SP_DeleteStudent]
+    @StudentID int,
+	@IsDeleted Bit Output
+AS
+BEGIN
+    SET NOCOUNT ON;
+		BEGIN TRY
+
+			if Not Exists (SELECT 1 FROM dbo.Students Where dbo.Students.StudentID = @StudentID)
+				Throw 50001, 'Invalid, Student Not Found with the Provided StudentID!', 1;
+
+				Delete FROM dbo.Students
+				Where dbo.Students.StudentID = @StudentID;
+
+				if (@@ROWCOUNT > 0)
+					SET @IsDeleted = 1;
+				Else
+					SET @IsDeleted = 0;
+
+		END TRY
+		BEGIN CATCH 
+
+			Declare @Error_Message nvarchar(4000) = Error_Message();
+			Throw 50002, @Error_Message, 2;
+
+		END CATCH
+
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetAllStudents]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE Procedure [dbo].[SP_GetAllStudents]
+AS
+Begin
+	SET NoCount ON;
+		Begin Try
+			SELECT 
+				StudentID AS [Student ID],
+				Name AS [Name],
+				Age AS [Age],
+				Grade AS [Grade]
+			FROM dbo.Students;
+		END Try
+		Begin Catch
+			Declare @ErrorMessage nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50001, @ErrorMessage, 1;
+		END Catch
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetAverageGrade]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+Create Procedure [dbo].[SP_GetAverageGrade]
+AS
+Begin
+	SET NoCount ON;
+		Begin Try
+
+			SELECT 
+				AVG(Grade) AS [Average Grade]
+			FROM dbo.Students;
+
+		END Try
+		Begin Catch
+
+			Declare @ErrorMessage nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50001, @ErrorMessage, 1;
+
+		END Catch
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetFailedStudents]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+Create Procedure [dbo].[SP_GetFailedStudents]
+AS
+Begin
+	SET NoCount ON;
+		Begin Try
+
+			SELECT 
+				StudentID AS [Student ID],
+				Name AS [Name],
+				Age AS [Age],
+				Grade AS [Grade]
+			FROM dbo.Students
+			Where dbo.Students.Grade < 50;
+
+		END Try
+		Begin Catch
+
+			Declare @ErrorMessage nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50001, @ErrorMessage, 1;
+
+		END Catch
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetMaximumGrade]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+
+
+
+
+CREATE Procedure [dbo].[SP_GetMaximumGrade]
+AS
+Begin
+	SET NoCount ON;
+		Begin Try
+
+			SELECT 
+				MAX(Grade) AS [Maximum Grade]
+			FROM dbo.Students;
+
+		END Try
+		Begin Catch
+
+			Declare @ErrorMessage nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50001, @ErrorMessage, 1;
+
+		END Catch
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetMinmumGrade]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+
+
+
+
+CREATE Procedure [dbo].[SP_GetMinmumGrade]
+AS
+Begin
+	SET NoCount ON;
+		Begin Try
+
+			SELECT 
+				MIN(Grade) AS [Minmum Grade]
+			FROM dbo.Students;
+
+		END Try
+		Begin Catch
+
+			Declare @ErrorMessage nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50001, @ErrorMessage, 1;
+
+		END Catch
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetPassedStudents]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+Create Procedure [dbo].[SP_GetPassedStudents]
+AS
+Begin
+	SET NoCount ON;
+		Begin Try
+
+			SELECT 
+				StudentID AS [Student ID],
+				Name AS [Name],
+				Age AS [Age],
+				Grade AS [Grade]
+			FROM dbo.Students
+			Where dbo.Students.Grade >= 50;
+
+		END Try
+		Begin Catch
+
+			Declare @ErrorMessage nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50001, @ErrorMessage, 1;
+
+		END Catch
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetStudentById]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE Procedure [dbo].[SP_GetStudentById]
+	@StudentID int
+AS
+BEGIN
+	SET NoCount ON;
+		BEGIN TRY
+			if (@StudentID is Null)
+				Throw 50001, 'Invalid, Student ID is Required!', 1;
+
+			if (@StudentID <= 0)
+				Throw 50002, 'Invalid, Student ID Must be a Positive Number!', 2;
+
+				SELECT * FROM dbo.Students
+				Where dbo.Students.StudentID = @StudentID;
+
+			if (@@RowCount = 0)
+				Throw 50003, 'No Student Found with the provided StudnetID!', 3;
+
+		END TRY
+		BEGIN CATCH
+
+			Declare @Error_Message nvarchar(4000) = ERROR_MESSAGE();
+			Throw 50004, @Error_Message, 4;
+
+		END CATCH
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_UpdateStudent]    Script Date: 9/6/2025 4:21:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+--EXEC dbo.SP_GetPersonById
+--	@StudnetID = 1;
+--GO
+
+
+
+Create Procedure [dbo].[SP_UpdateStudent]
+	@StudentID int,
+	@Name nvarchar(50),
+	@Age int,
+	@Grade int,
+	@IsUpdated Bit Output
+AS
+BEGIN
+	SET NoCount ON;
+		BEGIN TRY
+
+			if (@StudentID is Null)
+				Throw 50001, 'Invalid, Student ID is Required!', 1;
+
+			if (@StudentID <= 0)
+				Throw 50002, 'Invalid, Student ID Must be a Positive Number!', 2;
+
+			if Not Exists (SELECT 1 FROM dbo.Students Where dbo.Students.StudentID = @StudentID)
+				Throw 50003, 'Invalid, Student Not Found!', 3;
+
+			if (@Name is Null OR Trim(@Name) = ' ')
+				Throw 50004, 'Name Can not be Empty!', 4;
+
+			if (@Age < 0)
+				Throw 50005, 'Age Must be a Positive Number!', 5;
+
+			if (@Grade is Null)
+				Throw 50006, 'Grade Can not be Empty!', 6;
+
+			if (@Grade < 0 OR @Grade > 100)
+				Throw 50007, 'Grade Must be between 0 and 100!', 7;
+
+				Update dbo.Students
+				SET		
+					Name = @Name,
+					Age = @Age,
+					Grade = @Grade
+				Where dbo.Students.StudentID = @StudentID;
+
+				if (@@RowCount > 0)
+					SET @IsUpdated = 1;
+				ELSE
+					SET @IsUpdated = 0;
+
+		END TRY
+		BEGIN CATCH
+
+			Declare @Error_Message nvarchar(4000) = Error_Message();
+			Throw 50008, @Error_Message, 8;
+
+		END CATCH
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [Students_DB] SET  READ_WRITE 
+GO

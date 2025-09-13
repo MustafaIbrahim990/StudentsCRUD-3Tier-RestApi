@@ -1,0 +1,15 @@
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\bin\Debug\net8.0\Students.BLL.deps.json
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\bin\Debug\net8.0\Students.BLL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\bin\Debug\net8.0\Students.BLL.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.AssemblyInfoInputs.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.AssemblyInfo.cs
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.csproj.CoreCompileInputs.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\refint\Students.BLL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\ref\Students.BLL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\bin\Debug\net8.0\Students.DAL.dll
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\bin\Debug\net8.0\Students.DAL.pdb
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.BLL.csproj.AssemblyReference.cache
+C:\Users\abdul\source\repos\APIs\Students Project\Students.BLL\Students.BLL\obj\Debug\net8.0\Students.022B1F38.Up2Date
